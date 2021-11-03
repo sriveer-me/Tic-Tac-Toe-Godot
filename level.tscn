@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://art/line.png" type="Texture" id=1]
-[ext_resource path="res://art/circle.png" type="Texture" id=2]
 [ext_resource path="res://Button.gd" type="Script" id=3]
 [ext_resource path="res://mainGame.gd" type="Script" id=4]
 
@@ -82,7 +81,6 @@ margin_left = 53.0
 margin_top = 68.0
 margin_right = 203.0
 margin_bottom = 213.0
-texture_hover = ExtResource( 2 )
 expand = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -94,7 +92,6 @@ margin_left = 280.0
 margin_top = 68.0
 margin_right = 430.0
 margin_bottom = 213.0
-texture_hover = ExtResource( 2 )
 expand = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -107,7 +104,6 @@ margin_left = 520.0
 margin_top = 68.0
 margin_right = 670.0
 margin_bottom = 213.0
-texture_hover = ExtResource( 2 )
 expand = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -120,7 +116,6 @@ margin_left = 53.0
 margin_top = 300.0
 margin_right = 203.0
 margin_bottom = 445.0
-texture_hover = ExtResource( 2 )
 expand = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -133,7 +128,6 @@ margin_left = 280.0
 margin_top = 300.0
 margin_right = 430.0
 margin_bottom = 445.0
-texture_hover = ExtResource( 2 )
 expand = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -146,7 +140,6 @@ margin_left = 520.0
 margin_top = 300.0
 margin_right = 670.0
 margin_bottom = 445.0
-texture_hover = ExtResource( 2 )
 expand = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -159,7 +152,6 @@ margin_left = 53.0
 margin_top = 535.0
 margin_right = 203.0
 margin_bottom = 680.0
-texture_hover = ExtResource( 2 )
 expand = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -172,7 +164,6 @@ margin_left = 280.0
 margin_top = 535.0
 margin_right = 430.0
 margin_bottom = 680.0
-texture_hover = ExtResource( 2 )
 expand = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -185,7 +176,6 @@ margin_left = 520.0
 margin_top = 535.0
 margin_right = 670.0
 margin_bottom = 680.0
-texture_hover = ExtResource( 2 )
 expand = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -200,7 +190,7 @@ position = Vector2( 2, 2 )
 [connection signal="playerPiecePlaced" from="mainGame/TopRight" to="mainGame" method="PlayerPiecePlaced"]
 [connection signal="pressed" from="mainGame/TopRight" to="mainGame/TopRight" method="onButtonPressed"]
 [connection signal="playerPiecePlaced" from="mainGame/CenterLeft" to="mainGame" method="PlayerPiecePlaced"]
-[connection signal="pressed" from="mainGame/CenterLeft" to="mainGame/CenterLeft" method="buttonPressed"]
+[connection signal="pressed" from="mainGame/CenterLeft" to="mainGame/CenterLeft" method="onButtonPressed"]
 [connection signal="playerPiecePlaced" from="mainGame/CenterCenter" to="mainGame" method="PlayerPiecePlaced"]
 [connection signal="pressed" from="mainGame/CenterCenter" to="mainGame/CenterCenter" method="onButtonPressed"]
 [connection signal="playerPiecePlaced" from="mainGame/CenterRight" to="mainGame" method="PlayerPiecePlaced"]
