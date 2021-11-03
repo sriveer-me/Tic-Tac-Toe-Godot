@@ -1,0 +1,213 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://art/line.png" type="Texture" id=1]
+[ext_resource path="res://art/circle.png" type="Texture" id=2]
+[ext_resource path="res://Button.gd" type="Script" id=3]
+[ext_resource path="res://mainGame.gd" type="Script" id=4]
+
+[node name="Node" type="Node"]
+
+[node name="mainGame" type="Control" parent="." groups=[
+"main",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="mainGame"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.941176, 0.898039, 0.898039, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VerticalLine-1" type="TextureRect" parent="mainGame"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 240.0
+margin_top = -360.0
+margin_right = 1191.0
+margin_bottom = -345.0
+rect_rotation = 90.0
+rect_scale = Vector2( 0.758, 1 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HorizontalLine-1" type="TextureRect" parent="mainGame"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -120.0
+margin_right = 951.0
+margin_bottom = -105.0
+rect_scale = Vector2( 0.758, 1 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HorizontalLine-2" type="TextureRect" parent="mainGame"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = 120.0
+margin_right = 951.0
+margin_bottom = 135.0
+rect_scale = Vector2( 0.758, 1 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VerticalLine-2" type="TextureRect" parent="mainGame"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 480.0
+margin_top = -360.0
+margin_right = 1431.0
+margin_bottom = -345.0
+rect_rotation = 90.0
+rect_scale = Vector2( 0.758, 1 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopLeft" type="TextureButton" parent="mainGame"]
+margin_left = 53.0
+margin_top = 68.0
+margin_right = 203.0
+margin_bottom = 213.0
+texture_hover = ExtResource( 2 )
+expand = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopCenter" type="TextureButton" parent="mainGame"]
+margin_left = 280.0
+margin_top = 68.0
+margin_right = 430.0
+margin_bottom = 213.0
+texture_hover = ExtResource( 2 )
+expand = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+position = Vector2( 1, 0 )
+
+[node name="TopRight" type="TextureButton" parent="mainGame"]
+margin_left = 520.0
+margin_top = 68.0
+margin_right = 670.0
+margin_bottom = 213.0
+texture_hover = ExtResource( 2 )
+expand = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+position = Vector2( 2, 0 )
+
+[node name="CenterLeft" type="TextureButton" parent="mainGame"]
+margin_left = 53.0
+margin_top = 300.0
+margin_right = 203.0
+margin_bottom = 445.0
+texture_hover = ExtResource( 2 )
+expand = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+position = Vector2( 0, 1 )
+
+[node name="CenterCenter" type="TextureButton" parent="mainGame"]
+margin_left = 280.0
+margin_top = 300.0
+margin_right = 430.0
+margin_bottom = 445.0
+texture_hover = ExtResource( 2 )
+expand = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+position = Vector2( 1, 1 )
+
+[node name="CenterRight" type="TextureButton" parent="mainGame"]
+margin_left = 520.0
+margin_top = 300.0
+margin_right = 670.0
+margin_bottom = 445.0
+texture_hover = ExtResource( 2 )
+expand = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+position = Vector2( 2, 1 )
+
+[node name="BottomLeft" type="TextureButton" parent="mainGame"]
+margin_left = 53.0
+margin_top = 535.0
+margin_right = 203.0
+margin_bottom = 680.0
+texture_hover = ExtResource( 2 )
+expand = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+position = Vector2( 0, 2 )
+
+[node name="BottomCenter" type="TextureButton" parent="mainGame"]
+margin_left = 280.0
+margin_top = 535.0
+margin_right = 430.0
+margin_bottom = 680.0
+texture_hover = ExtResource( 2 )
+expand = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+position = Vector2( 1, 2 )
+
+[node name="BottomRight" type="TextureButton" parent="mainGame"]
+margin_left = 520.0
+margin_top = 535.0
+margin_right = 670.0
+margin_bottom = 680.0
+texture_hover = ExtResource( 2 )
+expand = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+position = Vector2( 2, 2 )
+
+[connection signal="playerPiecePlaced" from="mainGame/TopLeft" to="mainGame" method="PlayerPiecePlaced"]
+[connection signal="pressed" from="mainGame/TopLeft" to="mainGame/TopLeft" method="onButtonPressed"]
+[connection signal="playerPiecePlaced" from="mainGame/TopCenter" to="mainGame" method="PlayerPiecePlaced"]
+[connection signal="pressed" from="mainGame/TopCenter" to="mainGame/TopCenter" method="onButtonPressed"]
+[connection signal="playerPiecePlaced" from="mainGame/TopRight" to="mainGame" method="PlayerPiecePlaced"]
+[connection signal="pressed" from="mainGame/TopRight" to="mainGame/TopRight" method="onButtonPressed"]
+[connection signal="playerPiecePlaced" from="mainGame/CenterLeft" to="mainGame" method="PlayerPiecePlaced"]
+[connection signal="pressed" from="mainGame/CenterLeft" to="mainGame/CenterLeft" method="buttonPressed"]
+[connection signal="playerPiecePlaced" from="mainGame/CenterCenter" to="mainGame" method="PlayerPiecePlaced"]
+[connection signal="pressed" from="mainGame/CenterCenter" to="mainGame/CenterCenter" method="onButtonPressed"]
+[connection signal="playerPiecePlaced" from="mainGame/CenterRight" to="mainGame" method="PlayerPiecePlaced"]
+[connection signal="pressed" from="mainGame/CenterRight" to="mainGame/CenterRight" method="onButtonPressed"]
+[connection signal="playerPiecePlaced" from="mainGame/BottomLeft" to="mainGame" method="PlayerPiecePlaced"]
+[connection signal="pressed" from="mainGame/BottomLeft" to="mainGame/BottomLeft" method="onButtonPressed"]
+[connection signal="playerPiecePlaced" from="mainGame/BottomCenter" to="mainGame" method="PlayerPiecePlaced"]
+[connection signal="pressed" from="mainGame/BottomCenter" to="mainGame/BottomCenter" method="onButtonPressed"]
+[connection signal="playerPiecePlaced" from="mainGame/BottomRight" to="mainGame" method="PlayerPiecePlaced"]
+[connection signal="pressed" from="mainGame/BottomRight" to="mainGame/BottomRight" method="onButtonPressed"]
