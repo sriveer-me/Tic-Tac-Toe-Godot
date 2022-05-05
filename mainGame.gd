@@ -15,9 +15,9 @@ func placeCross(gameBoardPosition):
 func isPositionEmpty(positionX,positionY):
 	return gameBoard[(positionY * 3) + positionX] == 0
 
-func gameBoardFull():
+func gameBoardFull(board):
 	var flag = true;
-	for val in gameBoard:
+	for val in board:
 		if(val == 0):
 			flag = false;
 			break;
@@ -57,57 +57,52 @@ var oppositeValue = {
 	"1":2,
 	"2":1
 }
-func miniMaxPlay(board,value,isMax):
+func miniMaxPlay(board,value = 2,isMax = true,depth = 0):
 	#start check if the game is over and is the result favourable or not
 	var gameVictor = gameOver(board);
-	if(gameVictor == 2):
-		return {"score" : 1, "move":null};
-	elif(gameVictor == 1):
-		return {"score" : -1,"move":null};
-	elif(gameBoardFull()):
+	if(gameVictor == 2): #computer victory
+		return {"score" : 10 - depth ,"move":null};
+	elif(gameVictor == 1): #player victory
+		return {"score" : -10 + depth ,"move":null};
+	elif(gameBoardFull(board)): #tie
 		return {"score" : 0, "move":null};
 	#end check if game is over block
 	
-	var counter = 0;
-	var highScore = null;
-	var totalScore = 0;
-	var bestMove = null;
-	for point in board:
-		if(point == 0):
-			board[counter] = value;
-			var ret = miniMaxPlay(board.duplicate(),oppositeValue[str(value)],!isMax);
-			if(isMax):
-				if(highScore == null or highScore < ret["score"]):
-					highScore=ret["score"];
-					bestMove=counter;
-			else:
-				if(highScore == null or highScore > ret["score"]):
-					highScore=ret["score"];
-					bestMove=counter;
-			totalScore = ret["score"] + totalScore;
-			board[counter] = 0;
-		counter = counter + 1;
+	var move = null;
 	
-	return {"score":totalScore,"move":bestMove}
-
-
-func getMovement(board1,board2):
-	if(board1.size() != board2.size()):
-		print("get movement failed as both the boards are of different sizes");
-	
-	for i in range(0,board1.size()):
-		if(board1[i] == board2[i]):
-			continue;
-		else: return {"x":i%3,"y":i/3} 
-	
-	print("two similar boards are given");
-	return null;
+	if(isMax):
+		var counter = 0;
+		var maxValue = -INF;
+		for position in board:
+			if(position == 0):
+				board[counter] = value;
+				var ret = miniMaxPlay(board.duplicate(),oppositeValue[str(value)],!isMax,depth + 1)
+				if(maxValue < ret["score"]):
+					maxValue = ret["score"];
+					move = counter;
+				board[counter] = 0;
+			counter = counter +1;
+		return {"score": maxValue,"move": move}
+	else:
+		var counter = 0;
+		var minValue = INF;
+		for position in board:
+			if(position == 0):
+				board[counter] = value;
+				var ret = miniMaxPlay(board.duplicate(),oppositeValue[str(value)],!isMax,depth + 1)
+				if(minValue > ret["score"]):
+					minValue = ret["score"];
+					move = counter;
+				board[counter] = 0;
+			counter = counter +1;
+		return {"score": minValue,"move": move}
 
 func enemyMove():
-	var newMovement = miniMaxPlay(gameBoard.duplicate(),2,true)["move"];
+	var newMovement = miniMaxPlay(gameBoard.duplicate())["move"];
 	if(newMovement == null):
 		print("Game Over In Tie");
 	else:
+		print("cross placed in %s" % newMovement);
 		placeCross(newMovement);
 		globalFlags.playerCanChoose = true;
 
